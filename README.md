@@ -17,6 +17,24 @@ npm start
 
 Server používá port 4173. Alternativně `python3 -m http.server 4173`. Nepotřebuje instalovat npm balíčky. Kvůli JS modulům nepoužívejte otevírání HTML přes `file://`.
 
+## Spuštění jednotlivých modulů
+
+Po spuštění `npm start` otevřete na **stejném zařízení, na kterém běží server**, některý z odkazů:
+
+| Modul | Odkaz na spuštění |
+| --- | --- |
+| Úvodní klub | [Otevřít aplikaci](http://127.0.0.1:4173/) |
+| Čísla 11–20 | [Spustit čísla](http://127.0.0.1:4173/?module=numbers) |
+| Školní potřeby a vybavení třídy | [Spustit školní slovíčka](http://127.0.0.1:4173/?module=school) |
+| Předložky: in, on, under, next to | [Spustit předložky](http://127.0.0.1:4173/?module=positions) |
+| Věty: there is / isn't / are / aren't | [Spustit věty](http://127.0.0.1:4173/?module=sentences) |
+| Bonusová slovíčka a barvy | [Spustit bonus](http://127.0.0.1:4173/?module=extras) |
+| Závěrečný zápas | [Spustit ověření znalostí](http://127.0.0.1:4173/?module=exam) |
+
+Odkazy na témata otevřou nabídku jejich kartiček a procvičování. Zápas otevře úvod před spuštěním zkoušky. Tyto lokální odkazy nejsou hostovaná aplikace a z jiného iPadu k serveru nevedou. Samotné zobrazení souboru `index.html` na GitHubu hru nespustí. Po případném nasazení na schválené hostování použijte jeho skutečnou adresu se stejnými parametry `?module=…`. GitHub Pages zatím nejsou aktivované a repozitář zůstává soukromý.
+
+## Testování
+
 ```sh
 npm test
 ```

@@ -19,6 +19,15 @@ with sync_playwright() as p:
     assert page.locator('.module-card').count() == 4
     assert page.locator('h1').inner_text() == 'Malý hráč.\nVelká angličtina.'
 
+    # README links must open the requested lesson, not just the home screen.
+    for module, title in [('numbers', 'Čísla 11–20'), ('school', 'Ve škole'), ('positions', 'Kde to je?'), ('sentences', 'Poskládej větu'), ('extras', 'Bonusová přihrávka'), ('exam', 'Ukaž, co už umíš.')]:
+        page.goto(BASE + '?module=' + module, wait_until='networkidle')
+        assert page.locator('h1').inner_text() == title
+    for invalid in ['unknown', '__proto__', 'toString']:
+        page.goto(BASE + '?module=' + invalid, wait_until='networkidle')
+        assert page.locator('.module-card').count() == 4
+    page.goto(BASE, wait_until='networkidle')
+
     # Every lesson loads its study illustrations and explanations.
     for category, length in [('school', 15), ('positions', 4), ('sentences', 8), ('extras', 15)]:
         page.locator(f'[data-action="lesson"][data-id="{category}"]').click()

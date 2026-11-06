@@ -143,5 +143,10 @@ document.querySelector('#sound-toggle').onclick=()=>{progress.sound=!progress.so
 document.querySelector('#parent-open').onclick=parentOpen;
 document.querySelector('#parent-close').onclick=()=>document.querySelector('#parent-dialog').close();
 if('speechSynthesis' in window)speechSynthesis.getVoices();
-render();
+const initialModule=new URLSearchParams(location.search).get('module');
+if(initialModule==='exam')examIntro();
+else {
+  if(Object.hasOwn(decks,initialModule))state={view:'lesson',id:initialModule};
+  render();
+}
 if('serviceWorker' in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('./sw.js').catch(()=>toast('Offline uložení není dostupné. S připojením můžeš hrát dál.'));
