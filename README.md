@@ -19,7 +19,7 @@ Server používá port 4173. Alternativně `python3 -m http.server 4173`. Nepot�
 
 ## Spuštění jednotlivých modulů
 
-Následující odkazy míří na cílovou online aplikaci na GitHub Pages a jsou určené i pro iPad. **Web zatím není aktivovaný; do dokončení nasazení tyto adresy hru nespustí.** Přístup k nastavení Pages přes dostupnou GitHub integraci vrací HTTP 403. Aktivace musí zachovat soukromý repozitář a mít schválený přístupový režim samotného webu.
+Následující odkazy míří na cílovou online aplikaci na GitHub Pages a jsou určené i pro iPad. **Web zatím není aktivovaný; do dokončení nasazení tyto adresy hru nespustí.** Přístup k nastavení Pages přes dostupnou GitHub integraci vrací HTTP 403. Veřejná dostupnost webu byla schválena při zachování soukromého repozitáře. Aktivaci nyní blokuje oprávnění GitHub integrace (HTTP 403), nikoli chybějící souhlas.
 
 | Modul | Odkaz na spuštění |
 | --- | --- |
@@ -43,11 +43,11 @@ Testy obsahu a generování otázek vyžadují Node.js 24+. Web samotný Node ne
 
 Ověřeno: 12 automatizovaných testů obsahu a vyhodnocení; v Chromium všechny kartičky, párování i chybné dvojice, celý trénink, zápas s výsledkem 18/20, přehled a opakování chyb, uchování pokroku, dotykové ovládání, rozměry iPadu a telefonu, chování bez úložiště a bez hlasového API. Ověřeno také spuštění i offline načtení pod podadresářem `/anglicka-liga/`. Skutečné Safari na iPadu a veřejné nasazení ještě ověřeny nebyly.
 
-## GitHub Pages (ruční zveřejnění, až bude schváleno)
+## GitHub Pages – schválený veřejný web, soukromý repozitář
 
-1. Použijte pouze soukromý repozitář `TVS-Albert/ZkouseniTonik`. Pokud tarif nepodporuje požadované Pages ze soukromého repozitáře, nepřevádějte ho na veřejný. Před aktivací webu zvlášť ověřte jeho přístupový režim; soukromý repozitář nemusí znamenat soukromý web.
-2. Nahrajte soubory projektu do větve `main` (včetně souboru `.nojekyll`). Fotky učebnice nenahrávejte.
-3. V repozitáři otevřete **Settings → Pages → Build and deployment → Deploy from a branch**. Vyberte **main** a **/(root)** a uložte.
+1. Ponechte repozitář `TVS-Albert/ZkouseniTonik` soukromý. Veřejně dostupný web hry byl schválen. Pokud tarif nepodporuje Pages ze soukromého repozitáře, nepřevádějte repozitář na veřejný; bude potřeba tarif podporující tuto kombinaci.
+2. Soubory projektu už jsou ve větvi `main`, včetně `.nojekyll`. Fotky učebnice nejsou součástí repozitáře.
+3. V přihlášeném GitHubu otevřete [Settings → Pages](https://github.com/TVS-Albert/ZkouseniTonik/settings/pages). V **Build and deployment → Source** vyberte **Deploy from a branch**, větev **main**, adresář **/(root)** a klikněte **Save**. Dostupná integrace tento administrativní krok nedokáže provést: API pro vytvoření Pages vrací `403 Resource not accessible by integration`.
 4. Po dokončení nasazení otevřete GitHubem zobrazenou HTTPS adresu v Safari. Všechny cesty jsou relativní, takže web podporuje i podadresář `/anglicka-liga/`.
 5. Na iPadu: **Sdílet → Přidat na plochu**. Po prvním úplném načtení se soubory ukládají pro offline použití. Prohlížeč může cache i lokální pokrok vymazat; výslovnost offline závisí na staženém hlasu. Zvuk spusťte klepnutím, zkontrolujte hlasitost a anglické hlasy zařízení.
 
