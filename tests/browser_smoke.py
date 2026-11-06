@@ -2,14 +2,18 @@
 import json
 import os
 from pathlib import Path
+from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 
 BASE = os.environ.get('APP_TEST_URL', 'http://127.0.0.1:4173/')
 OUT = Path(os.environ.get('APP_TEST_OUTPUT', '/tmp/anglicka-liga-checks'))
 OUT.mkdir(parents=True, exist_ok=True)
 
+proxy_url = os.environ.get('HTTPS_PROXY') if urlsplit(BASE).hostname not in ('127.0.0.1','localhost') else None
+launch_options = {'proxy': {'server': proxy_url}} if proxy_url else {}
+
 with sync_playwright() as p:
-    browser = p.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE') or ('/usr/bin/chromium' if Path('/usr/bin/chromium').exists() else p.chromium.executable_path), args=['--no-sandbox'])
+    browser = p.chromium.launch(**launch_options, executable_path=os.environ.get('CHROMIUM_EXECUTABLE') or ('/usr/bin/chromium' if Path('/usr/bin/chromium').exists() else p.chromium.executable_path), args=['--no-sandbox'])
     context = browser.new_context(viewport={'width': 1440, 'height': 1100}, locale='cs-CZ')
     page = context.new_page()
     errors = []

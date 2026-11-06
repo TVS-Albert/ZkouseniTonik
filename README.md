@@ -1,5 +1,7 @@
 # Anglická liga ⚽
 
+**[Spustit online hru na iPadu nebo počítači](https://tvs-albert.github.io/ZkouseniTonik/)**
+
 Česká fotbalová hra pro začínajícího školáka, připravená jako statický web pro Safari na iPadu a GitHub Pages. Bez placených služeb, účtu, závislostí a sestavování.
 
 ## Obsah
@@ -19,7 +21,7 @@ Server používá port 4173. Alternativně `python3 -m http.server 4173`. Nepot�
 
 ## Spuštění jednotlivých modulů
 
-Následující odkazy míří na cílovou online aplikaci na GitHub Pages a jsou určené i pro iPad. **Web zatím není aktivovaný; do dokončení nasazení tyto adresy hru nespustí.** Přístup k nastavení Pages přes dostupnou GitHub integraci vrací HTTP 403. Veřejná dostupnost webu byla schválena při zachování soukromého repozitáře. Aktivaci nyní blokuje oprávnění GitHub integrace (HTTP 403), nikoli chybějící souhlas.
+Hra je dostupná online přes HTTPS na GitHub Pages. Následující odkazy otevřou jednotlivé moduly přímo v prohlížeči, bez lokální instalace.
 
 | Modul | Odkaz na spuštění |
 | --- | --- |
@@ -31,7 +33,7 @@ Následující odkazy míří na cílovou online aplikaci na GitHub Pages a jsou
 | Bonusová slovíčka a barvy | [Spustit bonus](https://tvs-albert.github.io/ZkouseniTonik/?module=extras) |
 | Závěrečný zápas | [Spustit ověření znalostí](https://tvs-albert.github.io/ZkouseniTonik/?module=exam) |
 
-Po nasazení odkazy na témata otevřou nabídku jejich kartiček a procvičování; zápas otevře úvod před zkouškou. Samotné zobrazení `index.html` na GitHubu hru nespustí. Repozitář zůstává Private. Soukromý repozitář automaticky nezajišťuje soukromý web Pages; online zpřístupnění je samostatný krok. Pro lokální vývoj nadále slouží `npm start` a port 4173.
+Odkazy na témata otevřou nabídku jejich kartiček a procvičování; zápas otevře úvod před zkouškou. Repozitář i web jsou podle schváleného nastavení veřejné. Pro lokální vývoj nadále slouží `npm start` a port 4173.
 
 ## Testování
 
@@ -41,19 +43,26 @@ npm test
 
 Testy obsahu a generování otázek vyžadují Node.js 24+. Web samotný Node nepotřebuje. Prohlížečové ověření v izolovaném podadresáři lze spustit příkazem `npm run test:browser`, pokud je v prostředí Python Playwright a Chromium. Tento nástroj není závislostí aplikace.
 
-Ověřeno: 12 automatizovaných testů obsahu a vyhodnocení; v Chromium všechny kartičky, párování i chybné dvojice, celý trénink, zápas s výsledkem 18/20, přehled a opakování chyb, uchování pokroku, dotykové ovládání, rozměry iPadu a telefonu, chování bez úložiště a bez hlasového API. Ověřeno také spuštění i offline načtení pod podadresářem `/anglicka-liga/`. Skutečné Safari na iPadu a veřejné nasazení ještě ověřeny nebyly.
+Ověřeno: 12 automatizovaných testů obsahu a vyhodnocení; v Chromium všechny kartičky, párování i chybné dvojice, celý trénink, zápas s výsledkem 18/20, přehled a opakování chyb, uchování pokroku, dotykové ovládání, rozměry iPadu a telefonu, chování bez úložiště a bez hlasového API. Ověřeno také spuštění i offline načtení pod podadresářem `/anglicka-liga/`. Skutečné Safari na iPadu zatím ověřené není. Veřejné nasazení používá GitHub Pages; všechny jeho runtime soubory byly ověřeny proti zdrojovým souborům.
 
-## GitHub Pages – schválený veřejný web, soukromý repozitář
+## Online provoz a iPad
 
-1. Ponechte repozitář `TVS-Albert/ZkouseniTonik` soukromý. Veřejně dostupný web hry byl schválen. Pokud tarif nepodporuje Pages ze soukromého repozitáře, nepřevádějte repozitář na veřejný; bude potřeba tarif podporující tuto kombinaci.
-2. Soubory projektu už jsou ve větvi `main`, včetně `.nojekyll`. Fotky učebnice nejsou součástí repozitáře.
-3. V přihlášeném GitHubu otevřete [Settings → Pages](https://github.com/TVS-Albert/ZkouseniTonik/settings/pages). V **Build and deployment → Source** vyberte **Deploy from a branch**, větev **main**, adresář **/(root)** a klikněte **Save**. Dostupná integrace tento administrativní krok nedokáže provést: API pro vytvoření Pages vrací `403 Resource not accessible by integration`.
-4. Po dokončení nasazení otevřete GitHubem zobrazenou HTTPS adresu v Safari. Všechny cesty jsou relativní, takže web podporuje i podadresář `/anglicka-liga/`.
-5. Na iPadu: **Sdílet → Přidat na plochu**. Po prvním úplném načtení se soubory ukládají pro offline použití. Prohlížeč může cache i lokální pokrok vymazat; výslovnost offline závisí na staženém hlasu. Zvuk spusťte klepnutím, zkontrolujte hlasitost a anglické hlasy zařízení.
+Web běží na **https://tvs-albert.github.io/ZkouseniTonik/**. GitHub Pages používají větev **main**, adresář **/(root)** a vynucené HTTPS. Repozitář je po výslovném schválení Public. Další push do `main` spustí aktualizaci webu; stav lze sledovat v [GitHub Actions](https://github.com/TVS-Albert/ZkouseniTonik/actions).
+
+Na iPadu otevřete odkaz v Safari a případně zvolte **Sdílet → Přidat na plochu**. Po prvním úplném načtení se soubory ukládají pro offline použití. Prohlížeč může cache i lokální pokrok vymazat; výslovnost offline závisí na staženém anglickém hlasu. Zvuk spusťte klepnutím a zkontrolujte hlasitost zařízení.
+
+Nasazenou verzi lze znovu ověřit:
+
+```sh
+python3 tests/check_online.py
+APP_TEST_URL=https://tvs-albert.github.io/ZkouseniTonik/ python3 tests/browser_smoke.py
+```
+
+První kontrola porovná soubory online aplikace se zdrojovými soubory, druhá projde hru ve skutečném prohlížeči. Vyžaduje vývojové závislosti uvedené v části Testování. Pro HTTPS test se případná platformní proxy přebírá z prostředí; TLS ověřování se nevypíná.
 
 Service worker ukládá pouze vlastní statické soubory. Při změně vzájemně závislých souborů změňte verzi cache v `sw.js`; po aktualizaci zavřete stará okna aplikace. První načtení musí být online.
 
-Kód je určen pro soukromý repozitář TVS-Albert/ZkouseniTonik. GitHub Pages nebyly aktivovány. Soukromý repozitář automaticky neznamená soukromý web Pages; dostupnost i přístupový režim závisejí na tarifu a konfiguraci GitHubu.
+Fotografie učebnice ani původní CD nahrávky nejsou součástí zveřejněného projektu. Výukový obsah vychází z dodaných podkladů a ilustrace jsou vytvořené pro tuto hru.
 
 ## Úpravy
 

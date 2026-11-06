@@ -60,7 +60,7 @@ Hra nemá backend, účty, reklamu ani analytiku. Neobsahuje tajné klíče. Fot
 
 Pokrok existuje pouze v konkrétním prohlížeči a může být smazán OS nebo uživatelem. Systémový hlas může záviset na hlasovém balíčku či službě zařízení; aplikace nekontroluje chování hlasového poskytovatele. Service worker obsluhuje vlastní origin a jeho scope; izolovaný testovací server zpřístupňuje pouze veřejné aplikační soubory na loopbacku.
 
-GitHub API před přenosem potvrdilo `private: true` a oprávnění push/admin pro `TVS-Albert/ZkouseniTonik`. Repozitář se nesmí převést na veřejný. `private: true` v package.json samo o sobě nijak nezajišťuje soukromí GitHub repozitáře; rozhodující je ověření přes GitHub. Pages nejsou aktivovány: soukromý zdrojový repozitář nezaručuje soukromý hostovaný web a bezplatný tarif nemusí Pages ze soukromého repozitáře podporovat.
+Původní přenos proběhl do soukromého repozitáře. Po potvrzení omezení tarifu uživatel výslovně schválil přepnutí na Public a změnu provedl. GitHub API nyní potvrzuje veřejný repozitář i veřejné Pages s vynuceným HTTPS. `private: true` v package.json pouze brání publikaci npm balíčku, neurčuje viditelnost GitHub repozitáře.
 
 ## Přístupnost, výkon a provoz
 
@@ -74,3 +74,11 @@ Statický web nepotřebuje databázi ani build server. Vlastní vektorové ilust
 2. Pokud mají být přidány jiné předměty do UI, doplnit volbu kurzu, oddělené úložiště a lokalizované instrukce. Rozšiřitelnost jádra je hotová, tento produktový tok ještě ne.
 3. Větší růst UI si vyžádá rozdělení `app.js` na renderery jednotlivých pohledů. Nynější oddělení typů úloh se týká jejich generování a logiky; není to kompletní framework UI pluginů. Gramatické šablony a část scén zůstávají anglickému kurzu specifické.
 4. Případná synchronizace mezi zařízeními, export výsledků a chráněné webové hostování jsou samostatné budoucí funkce. Soukromý push nepublikuje web pro iPad.
+
+## Ověření skutečného online nasazení
+
+Web: https://tvs-albert.github.io/ZkouseniTonik/. GitHub Pages používají `main` a `/(root)`. První nasazení commitu `cc111bba245dc9b1248499efe6478320cdd709fd` úspěšně dokončilo [běh 42235305426](https://github.com/TVS-Albert/ZkouseniTonik/actions/runs/42235305426). Původní HTTP 404 zmizelo po dokončení zveřejnění.
+
+`python tests/check_online.py` úspěšně ověřil HTTP 200 a přesnou shodu obsahu na 22 adresách runtime souborů se zdrojovým checkoutem. Úplný `browser_smoke.py` s `APP_TEST_URL` nastaveným na skutečné Pages také prošel: všech šest přímých modulových odkazů z README, bezpečný návrat na úvod při neznámém modulu, všechny kartičky, obousměrné učení, párování včetně chybného páru, trénink 10/10, zkouška 18/20, procvičení chyb, ukládání, rodičovský přehled, dotykové ovládání, tři mobilní/tabletové rozměry, nedostupné úložiště a hlasové API i reload po odpojení připojení. Nebyly zachyceny JS výjimky. HTTPS testy použily platformní proxy a zachované TLS ověřování.
+
+Tato produkční kontrola proběhla v Chromium. Neznamená fyzické ověření Safari na iPadu ani poslech výslovnosti na konkrétním zařízení. Pozdější aktualizace dokumentace a testovacích nástrojů nemění runtime aplikace; ověření souborů lze opakovat skriptem uvedeným výše.
