@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#174936">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Anglická liga">
+  <meta name="description" content="Fotbalové dobrodružství s angličtinou. Čísla, školní potřeby, předložky a věty pro malé šampiony.">
+  <title>Anglická liga • Malý hráč, velká angličtina</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="#" class="brand" aria-label="Anglická liga – domů"><span class="brand-ball">⚽</span><span>anglická<span class="brand-light">liga</span><small>MALÁ AKADEMIE VELKÝCH HRÁČŮ</small></span></a>
+    <div class="header-right"><span class="club-label">TVŮJ ANGLICKÝ KLUB</span><button id="sound-toggle" class="icon-button" aria-pressed="true" aria-label="Vypnout výslovnost">♫</button><span class="avatar" aria-label="Malý šampion">★</span></div>
+  </header>
+  <main id="app" tabindex="-1"></main>
+  <footer class="site-footer"><span>⚽ Malé kroky. Velké góly.</span><span>Uč se po svém. Každý den o kousek dál.</span><button id="parent-open">Pro rodiče</button></footer>
+  <dialog id="parent-dialog" aria-labelledby="parent-title"><div class="dialog-head"><h2 id="parent-title">Trenérský přehled</h2><button id="parent-close" class="icon-button" aria-label="Zavřít">✕</button></div><div id="parent-content"></div></dialog>
+  <div id="toast" role="status" class="toast" hidden></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
