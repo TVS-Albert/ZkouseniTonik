@@ -12,7 +12,7 @@ Jeden modul: **Angličtina – příprava na test 9. 11. 2026**. Všechno dosava
 | Učit se hrou | [Začít hraní](https://tvs-albert.github.io/ZkouseniTonik/?module=learn) | Otáčení kartiček, spojování dvojic, počítání obrázků, předložky a skládání slov i vět |
 | Vyzkoušet se | [Začít zkoušení](https://tvs-albert.github.io/ZkouseniTonik/?module=exam) | 20 různorodých otázek, okamžitě vyhodnocených po každé odpovědi |
 
-Ve zkoušení se po klepnutí na odpověď hned zobrazí správné řešení a vysvětlení, při chybě také zvolená odpověď. U skládání se odpověď vyhodnotí po vložení posledního slova. Řešení zůstává na obrazovce až do klepnutí na **Další**. První odpověď se do výsledku započítá jednou a nelze ji přepsat. Chybné otázky lze na konci procvičit znovu.
+Ve zkoušení se po klepnutí na odpověď hned zobrazí správné řešení a vysvětlení, při chybě také zvolená odpověď. U slovíček se přeloží i chybná volba, například „television = televize“, aby bylo jasné, co vybrané slovo znamená. U skládání se odpověď vyhodnotí po vložení posledního slova. Řešení zůstává na obrazovce až do klepnutí na **Další**. První odpověď se do výsledku započítá jednou a nelze ji přepsat. Chybné otázky lze na konci procvičit znovu.
 
 Učení střídá 12 aktivit v jednom kole. Další kola přinášejí další kartičky; 52 karet postupně pokryje celé dosavadní učivo. Začínající čtenář nepotřebuje psát ani přetahovat – všechno se ovládá klepnutím, bez časového limitu. Fotbal zůstává prostředím a motivací.
 
@@ -57,7 +57,7 @@ npm run test:browser
 python3 tests/run_browser.py --layout
 ```
 
-Prohlížečové testy potřebují Python Playwright a Chromium. Kontrolují nový modul, všechny herní aktivity, zpětnou vazbu ihned po odpovědi, nemožnost přepsat odpověď, test s výsledkem 18/20, opakování chyb, zachování pokroku, dotykové ovládání, tabletové a telefonní rozměry, offline a selhání úložiště/hlasu. 18 jednotkových testů ověřuje také pokrytí všech karet, střídání předložek a gramatiky, obousměrnost a přidání dalšího předmětu. Skutečné Safari a poslech na fyzickém iPadu nejsou součástí těchto automatizovaných kontrol.
+Prohlížečové testy potřebují Python Playwright a Chromium. Kontrolují nový modul, všechny herní aktivity, zpětnou vazbu ihned po odpovědi, nemožnost přepsat odpověď, test s výsledkem 18/20, opakování chyb, zachování pokroku, dotykové ovládání, tabletové a telefonní rozměry, offline a selhání úložiště/hlasu. 21 jednotkových testů ověřuje také pokrytí všech karet, střídání předložek a gramatiky, obousměrnost a přidání dalšího předmětu. Skutečné Safari a poslech na fyzickém iPadu nejsou součástí těchto automatizovaných kontrol.
 
 Po dokončení nasazení:
 

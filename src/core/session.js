@@ -10,7 +10,9 @@ export function submitResponse(session,answer){
  if(session.feedback)return false;
  const item=session.items[session.index];
  session.answers[session.index]=answer;
- session.feedback={correct:answer===item.answer,answer:item.answer,explanation:item.explanation};
+ const correct=answer===item.answer;
+ const selectedTranslation=!correct&&answer&&item.optionTranslations&&Object.hasOwn(item.optionTranslations,answer)?item.optionTranslations[answer]:null;
+ session.feedback={correct,answer:item.answer,explanation:item.explanation,selectedTranslation};
  return true;
 }
 export function advanceSession(session){

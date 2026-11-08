@@ -122,6 +122,37 @@ with sync_playwright() as p:
         if page.locator('.answer').count():assert page.locator('.answer').first.bounding_box()['height']>=44
         page.locator('[data-action="home"]').click()
         page.locator('[data-action="leave"]').click()
+    # Regression from the supplied screenshot, in both translation directions.
+    page.set_viewport_size({'width':1024,'height':600})
+    for direction,wrong in [('cs-en','television'),('en-cs','televize')]:
+        target=page.evaluate("""async ({direction,wrong})=>{
+            const {makeTest}=await import('./src/content/test-2026-11-09.js');
+            const original=Math.random;
+            try{
+                for(let seed=1;seed<=5000;seed++){
+                    let state=seed;
+                    Math.random=()=>{state=(Math.imul(1664525,state)+1013904223)>>>0;return state/4294967296;};
+                    const qs=makeTest();
+                    const index=qs.findIndex(q=>q.item?.en==='computer'&&q.id.endsWith(direction)&&q.options.includes(wrong));
+                    if(index>=0)return {seed,index};
+                }
+                throw Error('No vocabulary regression fixture found');
+            }finally{Math.random=original;}
+        }""",{'direction':direction,'wrong':wrong})
+        page.evaluate("""seed=>{let state=seed;Math.random=()=>{state=(Math.imul(1664525,state)+1013904223)>>>0;return state/4294967296;};}""",target['seed'])
+        page.locator('[data-action="test"]').click()
+        for i in range(target['index']):
+            page.locator('[data-action="skip"]').click()
+            page.locator('[data-action="next"]').click()
+        assert page.locator('.question-prompt').inner_text()==('počítač' if direction=='cs-en' else 'computer')
+        page.locator('.answer').filter(has_text=wrong).click()
+        feedback=page.locator('.feedback').inner_text()
+        assert 'Tvoje odpověď: television = televize' in feedback
+        assert 'computer = počítač' in feedback
+        assert page.evaluate('document.documentElement.scrollHeight<=innerHeight+1')
+        page.screenshot(path=str(OUT/f'wrong-translation-{direction}.png'),full_page=True)
+        page.locator('[data-action="home"]').click()
+        page.locator('[data-action="leave"]').click()
     # All test entry links work; module aliases no longer split the curriculum.
     page.goto(BASE+'?module=exam',wait_until='networkidle')
     assert page.locator('.game-heading>span').last.inner_text()=='1 / 20'

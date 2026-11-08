@@ -27,11 +27,11 @@ Generátory a stav relace jsou oddělené od DOM. Obecné typy výběr a sklád�
 
 Původní klíč úložiště zůstává zachován. Nová pole `learnCursor` a `rounds` mají bezpečné nuly, neplatná data se validují. Nové výsledky nesou `moduleId: english-2026-11-09`; staré výsledky zůstávají dostupné v uložených datech, ale nemíchají se do nejlepšího skóre aktuálního modulu. Udržuje se nejvýše deset výsledků celkem. Nejde o cloudovou synchronizaci ani zaručené dlouhodobé uložení.
 
-SW v5 obsahuje nové tři runtime moduly, instaluje nejprve kompletní sadu a poté aktivuje novou verzi. Při aktualizaci na úvodní stránce nový klient obnoví stránku; v rozehrané nové relaci jen upozorní na aktualizaci. Starší klient může vyžadovat zavření a nové otevření všech oken aplikace. Offline výslovnost závisí na hlasu zařízení.
+SW v6 obsahuje nové tři runtime moduly, instaluje nejprve kompletní sadu a poté aktivuje novou verzi. Při aktualizaci na úvodní stránce nový klient obnoví stránku; v rozehrané nové relaci jen upozorní na aktualizaci. Starší klient může vyžadovat zavření a nové otevření všech oken aplikace. Offline výslovnost závisí na hlasu zařízení.
 
 ## Provedené kontroly
 
-- 18 jednotkových testů prošlo: dosavadní generátory, přidání jiného předmětu, migrace pokroku a skóre; dále nový modul, 100 generovaných smíšených testů, 52 karet během 13 kol, střídání všech předložek/tvarů/počtů, okamžité uzamčení odpovědí a validace skládání.
+- 21 jednotkových testů prošlo: dosavadní generátory, přidání jiného předmětu, migrace pokroku a skóre; dále nový modul, 100 generovaných smíšených testů, 52 karet během 13 kol, střídání všech předložek/tvarů/počtů, okamžité uzamčení odpovědí a validace skládání.
 - Statická kontrola importů a offline souborů prošla pro 19 runtime JS souborů.
 - Kompletní prohlížečový průchod v izolovaném podadresáři prošel: jeden modul a datum, všechny typy aktivit, chybná dvojice, zpětná vazba bez potvrzovacího tlačítka, zkouška 18/20, vysvětlení chyb, jejich opakování, pokrok po reloadu, dotyk, tři rozměry, offline a nedostupný hlas/úložiště.
 - Prohlížeč kontroluje nezachycené JS výjimky. Náhled úvodu byl vizuálně zkontrolován.
@@ -50,3 +50,5 @@ Rozhraní využívá dostupnou výšku `100dvh` při šířce alespoň 700 px a 
 Historie v `src/core/session.js` ukládá stav navštívené aktivity. Návrat obnovuje také rozpracované páry a tokeny. První odpověď zůstává uzamčená; přečtené kartičky jsou evidované, aby návrat nezvětšoval počet prohlédnutých karet a body nevznikaly podruhé. Zkoušení nepovoluje návrat do minulých otázek ani přeskočení nevyhodnocené otázky klávesovou šipkou. Samostatné procházení všech 52 kartiček je dostupné uvnitř učení. Klávesnice respektuje vstupní pole, modální dialogy a opakovaný stisk klávesy.
 
 `python tests/run_browser.py --layout` prošel 830 kontrolami ve velikostech 1366×768, 1280×720, 1024×768, 768×1024, 1180×820, 1024×600 a 1366×600. Měřena je skutečná výška dokumentu, viditelnost ovládání, přetečení obsahu uvnitř aktivity i rodičovských záložek – ne pouze absence scrollbarů. Kontroly zahrnují zpětnou vazbu u všech otázek, skládání, chybný pár, listování chybami a na krátkém notebooku všech 52 kartiček na obou stranách. Test navigace potvrzuje, že návrat nezvětšuje uložený kurzor. Běžný úplný funkční průchod také prošel. CI nyní spouští funkční i rozměrové kontroly.
+
+Zpětná vazba u slovíček nyní obsahuje také skutečný překlad chybně vybrané možnosti. Generátor poskytuje významy jen z použité banky; relace vybírá význam zvolené odpovědi a zobrazuje jej pouze při chybě, také v přehledu chyb. Ověřeno pro oba překladové směry i přesný příklad computer/television; správné, přeskočené či neznámé odpovědi nedostávají smyšlený překlad.
