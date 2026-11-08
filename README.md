@@ -16,6 +16,20 @@ Ve zkoušení se po klepnutí na odpověď hned zobrazí správné řešení a v
 
 Učení střídá 12 aktivit v jednom kole. Další kola přinášejí další kartičky; 52 karet postupně pokryje celé dosavadní učivo. Začínající čtenář nepotřebuje psát ani přetahovat – všechno se ovládá klepnutím, bez časového limitu. Fotbal zůstává prostředím a motivací.
 
+## Kompaktní zobrazení a šipky
+
+Hlavička i úvodní část jsou zmenšené. Na běžných rozměrech iPadu a notebooku se úvod, učení, otázky i vyhodnocení vejdou do výšky okna bez posouvání. Obrázky a odpovědi jsou vedle sebe; přehled chyb je po jedné položce. Rodičovský přehled má krátké záložky Učivo / Výsledky / Nastavení. Na úzkých telefonech nebo při výrazném zvětšení zůstává přirozené posouvání dostupné, aby se obsah neořezal.
+
+V učení zvolte **Jen kartičky ↔**, chcete-li přímo procházet všech 52 slovíček a vět. Fungují také tlačítka na obrazovce:
+
+- **←**: předchozí kartička nebo aktivita; rozehrané dvojice i odpovědi zůstanou zachované.
+- **→**: na neotočené kartičce ukáže řešení, dalším stiskem pokračuje. U ostatních úloh přejde dál až po vyhodnocení.
+- **Mezerník**: otočí kartičku na druhou stranu.
+
+Návrat k hotové úloze nepřičítá další góly ani znovu neposouvá uložený pokrok. Ve zkoušení nelze šipkou přeskočit nevyhodnocenou otázku. V přehledu chyb šipky přepínají jednotlivé chyby. V rodičovském dialogu se herní klávesové zkratky neuplatňují.
+
+Ověřeno 830 kontrolami skutečného přetečení a viditelnosti obsahu na rozměrech 1366×768, 1280×720, 1024×768, 768×1024, 1180×820, 1024×600 a 1366×600 v Chromium. Nejde o ověření na fyzickém iPadu.
+
 ## Učivo
 
 Čísla 11–20, školní potřeby a vybavení třídy, barvy a doplňková slovíčka z dodaných stránek, **in / on / under / next to**, **there is / isn't / are / aren't**, **How many…?**, **Where's…?**, **Is there…?**, krátké odpovědi a oprava nepravdivých tvrzení. Překlady slovíček jsou v obou směrech. Celé učivo včetně původně bonusových slovíček patří do stejného modulu a do výběru otázek.
@@ -40,9 +54,10 @@ Lokální server používá port 4173; není třeba instalovat npm balíčky. Ne
 npm run check
 npm test
 npm run test:browser
+python3 tests/run_browser.py --layout
 ```
 
-Prohlížečové testy potřebují Python Playwright a Chromium. Kontrolují nový modul, všechny herní aktivity, zpětnou vazbu ihned po odpovědi, nemožnost přepsat odpověď, test s výsledkem 18/20, opakování chyb, zachování pokroku, dotykové ovládání, tabletové a telefonní rozměry, offline a selhání úložiště/hlasu. 17 jednotkových testů ověřuje také pokrytí všech karet, střídání předložek a gramatiky, obousměrnost a přidání dalšího předmětu. Skutečné Safari a poslech na fyzickém iPadu nejsou součástí těchto automatizovaných kontrol.
+Prohlížečové testy potřebují Python Playwright a Chromium. Kontrolují nový modul, všechny herní aktivity, zpětnou vazbu ihned po odpovědi, nemožnost přepsat odpověď, test s výsledkem 18/20, opakování chyb, zachování pokroku, dotykové ovládání, tabletové a telefonní rozměry, offline a selhání úložiště/hlasu. 18 jednotkových testů ověřuje také pokrytí všech karet, střídání předložek a gramatiky, obousměrnost a přidání dalšího předmětu. Skutečné Safari a poslech na fyzickém iPadu nejsou součástí těchto automatizovaných kontrol.
 
 Po dokončení nasazení:
 

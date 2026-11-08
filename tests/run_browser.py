@@ -31,7 +31,7 @@ with tempfile.TemporaryDirectory(prefix='liga-pages-') as temporary:
                 if server.poll() is not None: raise RuntimeError('Test server exited')
                 time.sleep(.1)
         else: raise RuntimeError('Test server not ready')
-        result=subprocess.run([sys.executable,str(root/'tests/browser_smoke.py')],env={**os.environ,'APP_TEST_URL':url},cwd=root)
+        result=subprocess.run([sys.executable,str(root/('tests/browser_layout.py' if '--layout' in sys.argv else 'tests/browser_smoke.py'))],env={**os.environ,'APP_TEST_URL':url},cwd=root)
     finally:
         server.terminate()
         server.wait(timeout=5)

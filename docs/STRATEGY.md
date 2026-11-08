@@ -8,3 +8,5 @@
 6. Jednotkově testovat obsah, 100 nových smíšených testů, pokrytí 52 karet během 13 kol, celou sadu čísel/předložek/gramatiky, zamykání odpovědí a validaci skládání. Zachovat testy opakovaně použitelných generátorů.
 7. V prohlížeči projít učení i zkoušku 18/20 se dvěma chybnými odpověďmi, zkontrolovat okamžitou zpětnou vazbu, přeskočení, opakování chyb, staré URL, rodičovský přehled, offline, dotyk a omezené úložiště/hlas. Zkontrolovat vizuální výsledek i velikosti iPadu.
 8. Aktualizovat offline verzi a dokumentaci, nahrát změny do main, počkat na GitHub Pages a zopakovat kontrolu souborů i funkční scénáře nad veřejným HTTPS webem. Nevydávat lokální průchod za ověření nasazení.
+
+Následná vizuální úprava: kompaktní rámec dle výšky okna, rozložení obrázku vedle odpovědí, stránkování chyb a rodičovského přehledu. Doplnit listování šipkami a uchování historie bez duplicitního skórování. Ověřit všechny typy úloh včetně vysvětlení na sedmi rozměrech notebooků a iPadu; neřešit přetečení ořezáním či skrytím obsahu.

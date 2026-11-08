@@ -16,3 +16,4 @@ jobs:
       - run: python3 -m pip install playwright==1.62.0
       - run: python3 -m playwright install --with-deps chromium
       - run: python3 tests/run_browser.py
+      - run: python3 tests/run_browser.py --layout

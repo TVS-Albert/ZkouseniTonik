@@ -46,3 +46,17 @@ test('invalid ordering questions are rejected instead of silently producing fals
  assert.throws(()=>validateQuestions([{...q,tokens:['wrong','words']}]),/Invalid ordering/);
  assert.throws(()=>validateQuestions([{...q,tokens:[]}]),/Invalid ordering/);
 });
+
+test('learning arrows restore partial and completed work without unlocking answers',async()=>{
+ const {previousActivity}=await import('../src/core/session.js');
+ const items=makeLearningRound(0),s=createSession('learn',items);
+ assert.equal(previousActivity(s),false);s.revealed=true;assert.equal(advanceSession(s),true);
+ s.matched.push(items[1].pairs[0].id);s.left=items[1].pairs[1].id;
+ assert.equal(previousActivity(s),true);assert.equal(s.index,0);assert.equal(s.revealed,true);
+ assert.equal(advanceSession(s),true);assert.equal(s.matched.length,1);assert.equal(s.left,items[1].pairs[1].id);
+ s.feedback={correct:true,answer:'pairs',explanation:'done'};advanceSession(s);
+ submitResponse(s,items[2].answer);advanceSession(s);previousActivity(s);
+ assert.equal(s.feedback.correct,true);assert.equal(submitResponse(s,'wrong'),false);
+ assert.equal(s.answers[2],items[2].answer);
+ const exam=createSession('test',makeTest());submitResponse(exam,'wrong');advanceSession(exam);assert.equal(previousActivity(exam),false);
+});

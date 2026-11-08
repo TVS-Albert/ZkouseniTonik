@@ -11,7 +11,7 @@ OUT.mkdir(parents=True,exist_ok=True)
 proxy=os.environ.get('HTTPS_PROXY') if urlsplit(BASE).hostname not in ('127.0.0.1','localhost') else None
 with sync_playwright() as p:
     browser=p.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE') or ('/usr/bin/chromium' if Path('/usr/bin/chromium').exists() else p.chromium.executable_path),args=['--no-sandbox'],**({'proxy':{'server':proxy}} if proxy else {}))
-    context=browser.new_context(viewport={'width':1440,'height':1100},locale='cs-CZ')
+    context=browser.new_context(viewport={'width':1440,'height':1100},locale='cs-CZ',reduced_motion='reduce')
     page=context.new_page()
     errors=[]
     page.on('pageerror',lambda e:errors.append(str(e)))
@@ -100,7 +100,7 @@ with sync_playwright() as p:
         if i==0:page.screenshot(path=str(OUT/'immediate-feedback.png'),full_page=True)
         page.locator('[data-action="next"]').click()
     assert page.locator('.result-score strong').inner_text()=='18 / 20'
-    assert page.locator('.review-panel details').count()==2
+    assert page.locator('[data-review-count]').get_attribute('data-review-count')=='2'
     page.screenshot(path=str(OUT/'results.png'),full_page=True)
     page.locator('[data-action="retry"]').click()
     assert page.locator('.game-heading>span').last.inner_text()=='1 / 2'
@@ -110,6 +110,7 @@ with sync_playwright() as p:
     page.locator('[data-action="leave"]').click()
     page.locator('#parent-open').click()
     assert '9. 11. 2026' in page.locator('#parent-content').inner_text()
+    page.locator('[data-parent-tab="results"]').click()
     assert '90 %' in page.locator('.attempt-list').inner_text()
     page.locator('#parent-close').click()
     for name,width,height in [('ipad-portrait',768,1024),('ipad-landscape',1024,768),('phone',390,844)]:
