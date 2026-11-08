@@ -25,7 +25,7 @@ test('bad courses, topics, directions and ambiguous answers are rejected',()=>{
 });
 test('corrupted persisted data cannot crash the results view or create negative goals',()=>{
  const storage={getItem:()=>JSON.stringify({goals:-9,sound:'bad',completed:['numbers','numbers',3],attempts:[{date:'invalid',total:20,correct:20,percent:100}]})};
- assert.deepEqual(loadProgress(storage,'key'),{goals:0,sound:true,completed:['numbers'],attempts:[]});
+ assert.deepEqual(loadProgress(storage,'key'),{goals:0,sound:true,completed:['numbers'],attempts:[],learnCursor:0,rounds:0});
  assert.deepEqual(loadProgress({getItem:()=>'{broken'},'key').attempts,[]);
  assert.throws(()=>loadProgress({getItem:()=>{throw Error('blocked');}},'key'),/blocked/);
  assert.throws(()=>persistProgress({setItem:()=>{throw Error('quota');}},'key',{}),/quota/);

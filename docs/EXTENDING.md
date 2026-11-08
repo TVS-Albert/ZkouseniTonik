@@ -19,3 +19,9 @@ Pro zapojení nového kurzu do grafického rozhraní je třeba přidat výběr p
 Přidejte modul do `src/exercises/`. Generátor nesmí přistupovat k DOM ani úložišti. Standardní otázka `choice` využije existující renderer; nový způsob interakce vyžaduje renderer a obsluhu v UI. Pro nové obrázkové scény rozšiřte `art.js`. Přidejte jednotkové i prohlížečové scénáře.
 
 Po přidání modulu aktualizujte `ASSETS` a verzi cache v `sw.js`, spusťte `npm run check`, `npm test` a `python tests/run_browser.py`. Upravte `CONTENT.md` a popis testového pokrytí, pokud se změní učivo nebo počet otázek.
+
+## Aktuální modul přípravy na test
+
+Od 8. listopadu se hlavní UI opírá o `src/content/test-2026-11-09.js`. Obsahuje metadata jediného testu, interleavovanou banku všech karet a továrny `makeLearningRound(cursor)` a `makeTest()`. Původní banky zůstávají opakovaně použitelné interně. Budoucí modul pro další test založte v samostatném datovaném souboru; teprve při jeho přidání doplňte volbu mezi skutečnými testovými moduly. `src/core/session.js` lze použít pro oba režimy; první odpověď je definitivní a další otázka se otevře až po explicitním přechodu.
+
+Nový typ `order` poskytuje `tokens`, `answer` a `explanation`, ne `options`. Tokeny musí odpovídat slovům správné odpovědi i počtem výskytů. Renderer používá indexy, aby se nezaměňovala opakovaná slova. Testy sestavuje nový modul; původní `makeExam` z `engine.js` je kompatibilní bankové API a není aktuální zkouškou v UI.

@@ -30,3 +30,7 @@ Hlavní cíl: sedmileté dítě, numbers 11–20, school items, there is/isn't/a
 - Pokrok pouze lokálně na zařízení, posledních 10 dokončených zápasů. Bez účtu a reklamy.
 
 Fotografie používáme jako podklad k sestavení obsahu. Nejsou součástí veřejných souborů aplikace; texty úloh a ilustrace jsou pro hru vytvořeny znovu.
+
+## Aktualizace 8. listopadu 2026 – jeden testový modul
+
+Novější zadání nahrazuje předchozí rozdělení výše: všechno dosavadní učivo je součástí jediného modulu **Angličtina – příprava na test 9. 11. 2026**. Barvy a další slovíčka už nejsou oddělený bonus a patří i do banky zkoušení. Učení střídá otáčecí kartičky, spojování, počítání obrázků, předložky, doplňování a skládání vět/čísel. Zkoušení zůstává 20 otázek, ale míchá pět obsahových oblastí a různé typy interakce; staré pravidlo „pět otázek ze čtyř oblastí“ již neplatí. Každá odpověď se vyhodnocuje ihned, se správným řešením a vysvětlením, nikoli až na konci. Nové moduly vzniknou až pro další učivo a další testy.

@@ -2,6 +2,11 @@
 export function validateQuestions(questions) {
   if (!Array.isArray(questions) || !questions.length) throw new Error('Empty question bank');
   for (const q of questions) {
+    if(q.type==='order'){
+      if(!q.id||!q.category||!q.prompt||!Array.isArray(q.tokens)||q.tokens.length<2||typeof q.answer!=='string'||
+        [...q.tokens].sort().join(' ')!==q.answer.split(' ').sort().join(' '))throw new Error(`Invalid ordering question: ${q.id}`);
+      continue;
+    }
     if (!q.id || !q.category || !q.prompt || !Array.isArray(q.options) || q.options.length < 2 ||
         new Set(q.options).size !== q.options.length || !q.options.includes(q.answer)) {
       throw new Error(`Invalid question: ${q.id || 'missing id'}`);

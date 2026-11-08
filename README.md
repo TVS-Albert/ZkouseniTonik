@@ -1,71 +1,63 @@
 # Anglická liga ⚽
 
-**[Spustit online hru na iPadu nebo počítači](https://tvs-albert.github.io/ZkouseniTonik/)**
+**[Spustit online aplikaci](https://tvs-albert.github.io/ZkouseniTonik/)**
 
-Česká fotbalová hra pro začínajícího školáka, připravená jako statický web pro Safari na iPadu a GitHub Pages. Bez placených služeb, účtu, závislostí a sestavování.
+Jeden modul: **Angličtina – příprava na test 9. 11. 2026**. Všechno dosavadní učivo je pohromadě. Další moduly přibudou až s novým učivem a dalšími testy.
 
-## Obsah
+## Dvě jednoduché volby
 
-Čísla 11–20, školní předměty a vybavení třídy, in/on/under/next to, there is/isn't/are/aren't. Podle dodaných učebnic také How many…?, Where's…?, Is there…?, krátké odpovědi a oprava nepravdivého tvrzení. Podklady a přesný rozsah: [CONTENT.md](./CONTENT.md).
+| Část | Odkaz | Jak funguje |
+| --- | --- | --- |
+| Úvodní stránka | [Otevřít modul](https://tvs-albert.github.io/ZkouseniTonik/) | Všechno učivo a dvě velká tlačítka |
+| Učit se hrou | [Začít hraní](https://tvs-albert.github.io/ZkouseniTonik/?module=learn) | Otáčení kartiček, spojování dvojic, počítání obrázků, předložky a skládání slov i vět |
+| Vyzkoušet se | [Začít zkoušení](https://tvs-albert.github.io/ZkouseniTonik/?module=exam) | 20 různorodých otázek, okamžitě vyhodnocených po každé odpovědi |
 
-Nejprve obrázkové kartičky a trénink (výběr odpovědi i přiřazování), potom zápas o 20 otázkách se samostatným výsledkem pro každou oblast. Překlady slovíček v obou směrech. Test odhalí řešení až po dokončení. Výslovnost používá Web Speech API a dostupný anglický hlas zařízení; původní CD nahrávky nejsou přiloženy. Nepodporovaný či nefunkční hlas neblokuje hru.
+Ve zkoušení se po klepnutí na odpověď hned zobrazí správné řešení a vysvětlení, při chybě také zvolená odpověď. U skládání se odpověď vyhodnotí po vložení posledního slova. Řešení zůstává na obrazovce až do klepnutí na **Další**. První odpověď se do výsledku započítá jednou a nelze ji přepsat. Chybné otázky lze na konci procvičit znovu.
 
-## Lokální spuštění
+Učení střídá 12 aktivit v jednom kole. Další kola přinášejí další kartičky; 52 karet postupně pokryje celé dosavadní učivo. Začínající čtenář nepotřebuje psát ani přetahovat – všechno se ovládá klepnutím, bez časového limitu. Fotbal zůstává prostředím a motivací.
+
+## Učivo
+
+Čísla 11–20, školní potřeby a vybavení třídy, barvy a doplňková slovíčka z dodaných stránek, **in / on / under / next to**, **there is / isn't / are / aren't**, **How many…?**, **Where's…?**, **Is there…?**, krátké odpovědi a oprava nepravdivých tvrzení. Překlady slovíček jsou v obou směrech. Celé učivo včetně původně bonusových slovíček patří do stejného modulu a do výběru otázek.
+
+Jeden náhodný test neověří každé slovíčko. Zpětná vazba během zkoušení je záměrná výuková pomůcka. Přehled **Pro rodiče** ukazuje výsledky tohoto testového modulu; starší výsledky se do jeho nejlepšího skóre nemíchají. Pokrok zůstává v tomto prohlížeči, nesynchronizuje se a může být prohlížečem smazán. Výslovnost využívá anglický hlas zařízení, nikoli CD z učebnice.
+
+## iPad a online provoz
+
+Otevřete hru v Safari; přes **Sdílet → Přidat na plochu** lze přidat ikonu. Po úplném prvním načtení funguje i offline, pokud prohlížeč uchová data. Dostupnost výslovnosti offline závisí na anglickém hlasu zařízení. Pokud po aktualizaci vidíte starý vzhled, zavřete všechna okna hry a otevřete ji znovu s připojením k internetu.
+
+GitHub Pages používají veřejný repozitář `TVS-Albert/ZkouseniTonik`, větev `main`, `/(root)` a HTTPS. Další push spouští nasazení; [stav GitHub Actions](https://github.com/TVS-Albert/ZkouseniTonik/actions). Fotografie učebnice ani CD nahrávky nejsou distribuovány. Staré odkazy `?module=numbers`, `school`, `positions`, `sentences` a `extras` nyní otevřou stejnou úvodní stránku jednotného modulu.
+
+## Lokální spuštění a testy
 
 ```sh
-cd /workspace/ZkouseniTonik
 npm start
 ```
 
-Server používá port 4173. Alternativně `python3 -m http.server 4173`. Nepotřebuje instalovat npm balíčky. Kvůli JS modulům nepoužívejte otevírání HTML přes `file://`.
-
-## Spuštění jednotlivých modulů
-
-Hra je dostupná online přes HTTPS na GitHub Pages. Následující odkazy otevřou jednotlivé moduly přímo v prohlížeči, bez lokální instalace.
-
-| Modul | Odkaz na spuštění |
-| --- | --- |
-| Úvodní klub | [Otevřít aplikaci](https://tvs-albert.github.io/ZkouseniTonik/) |
-| Čísla 11–20 | [Spustit čísla](https://tvs-albert.github.io/ZkouseniTonik/?module=numbers) |
-| Školní potřeby a vybavení třídy | [Spustit školní slovíčka](https://tvs-albert.github.io/ZkouseniTonik/?module=school) |
-| Předložky: in, on, under, next to | [Spustit předložky](https://tvs-albert.github.io/ZkouseniTonik/?module=positions) |
-| Věty: there is / isn't / are / aren't | [Spustit věty](https://tvs-albert.github.io/ZkouseniTonik/?module=sentences) |
-| Bonusová slovíčka a barvy | [Spustit bonus](https://tvs-albert.github.io/ZkouseniTonik/?module=extras) |
-| Závěrečný zápas | [Spustit ověření znalostí](https://tvs-albert.github.io/ZkouseniTonik/?module=exam) |
-
-Odkazy na témata otevřou nabídku jejich kartiček a procvičování; zápas otevře úvod před zkouškou. Repozitář i web jsou podle schváleného nastavení veřejné. Pro lokální vývoj nadále slouží `npm start` a port 4173.
-
-## Testování
+Lokální server používá port 4173; není třeba instalovat npm balíčky. Neotevírejte HTML přes `file://`, protože aplikace používá ES moduly. Web nevyžaduje Node; Node 24 je potřeba pro vývojové testy a Python pro lokální server.
 
 ```sh
+npm run check
 npm test
+npm run test:browser
 ```
 
-Testy obsahu a generování otázek vyžadují Node.js 24+. Web samotný Node nepotřebuje. Prohlížečové ověření v izolovaném podadresáři lze spustit příkazem `npm run test:browser`, pokud je v prostředí Python Playwright a Chromium. Tento nástroj není závislostí aplikace.
+Prohlížečové testy potřebují Python Playwright a Chromium. Kontrolují nový modul, všechny herní aktivity, zpětnou vazbu ihned po odpovědi, nemožnost přepsat odpověď, test s výsledkem 18/20, opakování chyb, zachování pokroku, dotykové ovládání, tabletové a telefonní rozměry, offline a selhání úložiště/hlasu. 17 jednotkových testů ověřuje také pokrytí všech karet, střídání předložek a gramatiky, obousměrnost a přidání dalšího předmětu. Skutečné Safari a poslech na fyzickém iPadu nejsou součástí těchto automatizovaných kontrol.
 
-Ověřeno: 12 automatizovaných testů obsahu a vyhodnocení; v Chromium všechny kartičky, párování i chybné dvojice, celý trénink, zápas s výsledkem 18/20, přehled a opakování chyb, uchování pokroku, dotykové ovládání, rozměry iPadu a telefonu, chování bez úložiště a bez hlasového API. Ověřeno také spuštění i offline načtení pod podadresářem `/anglicka-liga/`. Skutečné Safari na iPadu zatím ověřené není. Veřejné nasazení používá GitHub Pages; všechny jeho runtime soubory byly ověřeny proti zdrojovým souborům.
-
-## Online provoz a iPad
-
-Web běží na **https://tvs-albert.github.io/ZkouseniTonik/**. GitHub Pages používají větev **main**, adresář **/(root)** a vynucené HTTPS. Repozitář je po výslovném schválení Public. Další push do `main` spustí aktualizaci webu; stav lze sledovat v [GitHub Actions](https://github.com/TVS-Albert/ZkouseniTonik/actions).
-
-Na iPadu otevřete odkaz v Safari a případně zvolte **Sdílet → Přidat na plochu**. Po prvním úplném načtení se soubory ukládají pro offline použití. Prohlížeč může cache i lokální pokrok vymazat; výslovnost offline závisí na staženém anglickém hlasu. Zvuk spusťte klepnutím a zkontrolujte hlasitost zařízení.
-
-Nasazenou verzi lze znovu ověřit:
+Po dokončení nasazení:
 
 ```sh
 python3 tests/check_online.py
 APP_TEST_URL=https://tvs-albert.github.io/ZkouseniTonik/ python3 tests/browser_smoke.py
 ```
 
-První kontrola porovná soubory online aplikace se zdrojovými soubory, druhá projde hru ve skutečném prohlížeči. Vyžaduje vývojové závislosti uvedené v části Testování. Pro HTTPS test se případná platformní proxy přebírá z prostředí; TLS ověřování se nevypíná.
+## Struktura
 
-Service worker ukládá pouze vlastní statické soubory. Při změně vzájemně závislých souborů změňte verzi cache v `sw.js`; po aktualizaci zavřete stará okna aplikace. První načtení musí být online.
+- `src/content/test-2026-11-09.js`: jeden datovaný výukový modul a sestavení smíšeného hraní i zkoušení.
+- `src/content/english-school.js`: veškeré kartičky a jazykové podklady; původní témata jsou interní banky, nikoli samostatné moduly na úvodní stránce.
+- `src/exercises/`: samostatné generátory slovíček, párování, počítání, předložek, gramatiky a skládání.
+- `src/core/session.js`: okamžité vyhodnocení, uzamčení první odpovědi a ruční přechod na další úlohu.
+- `src/core/progress.js`: validované lokální ukládání a zachování starého pokroku.
+- `app.js`, `style.css`, `art.js`: rozhraní, styl a vlastní obrázky.
 
-Fotografie učebnice ani původní CD nahrávky nejsou součástí zveřejněného projektu. Výukový obsah vychází z dodaných podkladů a ilustrace jsou vytvořené pro tuto hru.
-
-## Úpravy
-
-Slovní zásoba: `src/content/english-school.js`; definice kurzu: `src/content/english-course.js`; jednotlivé generátory: `src/exercises/`; registr, skóre a úložiště: `src/core/`. `content.js` a `engine.js` jsou kompatibilní vstupy; vlastní SVG obrázky: `art.js`; rozhraní: `app.js` a `style.css`. Pro nové úlohy zachovejte jednoznačné možnosti odpovědí a oddělení zkoušky od nápověd tréninku. Již existující pracovní kopie je izolované prostředí; není potřeba vytvářet další Git worktree.
-
-Architektura a rozšiřování: [docs/EXTENDING.md](docs/EXTENDING.md). Strategie: [docs/STRATEGY.md](docs/STRATEGY.md). Technická analýza: [docs/TECHNICAL_ANALYSIS.md](docs/TECHNICAL_ANALYSIS.md).
+Při změně runtime souborů aktualizujte seznam i verzi cache v `sw.js`. Používejte existující pracovní kopii; další Git worktree není nutný. [Obsah učiva](CONTENT.md) · [Rozšiřování](docs/EXTENDING.md) · [Strategie](docs/STRATEGY.md) · [Technická analýza](docs/TECHNICAL_ANALYSIS.md).
